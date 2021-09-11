@@ -21,11 +21,11 @@
 
 
 # Description 💻
-add in
+An ultimate index that contains details and information regarding superheroes/villains.
 
 # Instructions ⚡
 ### Option #1
-If you do not have python installed on your Windows system, you can download the main.exe [file](https://github.com/JordanLeich/Superhero-Index/blob/main/main.exe) and the file will run without any python installations or dependencies! Make sure to run the main.exe file as administrator as this will prevent any issues with permissions and such!
+If you do not have python installed on your Windows system, you can download the Index.exe [file](https://github.com/JordanLeich/Superhero-Index/blob/main/Index.exe) and the file will run without any python installations or dependencies! Make sure to run the Index.exe file as administrator as this will prevent any issues with permissions and such!
 
 ### Option #2
 Only use this option if you already have python installed on your system!
@@ -62,14 +62,11 @@ Only use this option if you already have python installed on your system!
      *Step 6*:
       Run the project using<br/>
       ```
-      python3 main.py
+      python3 Index.py
       ```
 
 # TODO List ❗ 
 - Check out the [Issues Page](https://github.com/JordanLeich/Superhero-Index/issues/1)
 
-# Contributing 👍
-add in
-
 # Bug Reporting 🐞
-add in
+- Check out the [Issues Page](https://github.com/JordanLeich/Superhero-Index/issues/2)
