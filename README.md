@@ -25,7 +25,7 @@ An ultimate index that contains details and information regarding superheroes/vi
 
 # Instructions ⚡
 ### Option #1
-If you do not have python installed on your Windows system, you can download the Index.exe [file](https://github.com/JordanLeich/Superhero-Index/blob/main/Index.exe) and the file will run without any python installations or dependencies! Make sure to run the Index.exe file as administrator as this will prevent any issues with permissions and such!
+If you do not have python installed on your Windows system, you can download the index.exe [file](https://github.com/JordanLeich/Superhero-Index/blob/main/index.exe) and the file will run without any python installations or dependencies! Make sure to run the Index.exe file as administrator as this will prevent any issues with permissions and such!
 
 ### Option #2
 Only use this option if you already have python installed on your system!
