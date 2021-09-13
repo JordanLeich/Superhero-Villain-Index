@@ -15,12 +15,14 @@ class Hero:
 
     def print_hero(self):
         print('Superhero Name: ' + self.name + '\n'
-              'Age: ' + str(self.age) + '\n'
-              'Status: ' + self.status + '\n'
-              'Creator: ' + self.creator + '\n'
-              'Team: ' + self.team + '\n'
-              'Powers: ' + self.powers + '\n'
-              'Power Ranking: ' + str(self.power_ranking))
+                                               'Age: ' + str(self.age) + '\n'
+                                                                         'Status: ' + self.status + '\n'
+                                                                                                    'Creator: ' + self.creator + '\n'
+                                                                                                                                 'Team: ' + self.team + '\n'
+                                                                                                                                                        'Powers: ' + self.powers + '\n'
+                                                                                                                                                                                   'Power Ranking: ' + str(
+            self.power_ranking) + '\n')
+
 
 def create_heroes():
     Superman = Hero('Superman', 'Immortal age/mid 20 or 30s', 'alive', 'DC', 'Justice League',
@@ -45,18 +47,37 @@ def create_heroes():
     Captain_America = Hero('Captain America', 99, 'unknown', 'Marvel', 'Avengers',
                            'Peak-Human Condition, Accelerated Healing Factor, Enhanced Intelligence, Longevity',
                            94)
-    heroes = [Superman, Batman, Thor, Loki, Hulk, Daredevil, Deadpool, Wolverine, Captain_America]
-    return heroes
+    return [
+        Superman,
+        Batman,
+        Thor,
+        Loki,
+        Hulk,
+        Daredevil,
+        Deadpool,
+        Wolverine,
+        Captain_America,
+    ]
 
 
 def start():
-    choice = str(input('Enter a superheros name: '))
+    choice = str(input('Enter a superhero or villain name: '))
     heroes = create_heroes()
     for i in heroes:
-        if i.name == choice:
+        if i.name.lower() == choice.lower():
+            print()
             Hero.print_hero(i)
-
-    # TODO once a superhero name is inputted, print out all the details about that hero.
+            time.sleep(2)
+            start()
+    if choice.lower() != i.name.lower():
+        print()
+        print(colors.red + 'Superhero or villain name not found!', colors.reset, '\n')
+        time.sleep(2)
+        start()
+    else:
+        print(colors.red + 'Error found!', colors.reset)
+        time.sleep(2)
+        sys.exit()
 
 
 if __name__ == '__main__':
@@ -65,6 +86,7 @@ if __name__ == '__main__':
     if running:
         start()
     else:
+        running = False
         print(colors.red + 'Error found!', colors.reset)
         time.sleep(2)
         sys.exit()
