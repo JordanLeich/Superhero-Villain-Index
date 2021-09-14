@@ -1,7 +1,9 @@
 import sys
 from Heroes import *
+from Villains import *
 import webbrowser
 from modules import colors
+
 
 def create_heroes():
     Superman = Hero('Superman', 'Immortal age/mid 20 or 30s', 'alive', 'DC', 'Justice League',
@@ -13,8 +15,6 @@ def create_heroes():
                 'Avengers',
                 'superhuman strength, speed, agility, durability and immunity to most diseases', 493000,
                 'images/portraits/thor.jpg')
-    Loki = Hero('Loki', 1000, 'deceased', 'Marvel', 'none',
-                'strength, durability, and longevity far superior to humans', 616, 'images/portraits/loki.jpg')
     Hulk = Hero('Hulk', 49, 'alive', 'Marvel', 'Avengers', 'strength ', 6900, 'images/portraits/hulk.jpg')
     Daredevil = Hero('Daredevil', 25, 'alive', 'Marvel', 'none',
                      'Superhuman senses Echolocative radar sense Skilled acrobat, martial artist, and stick fighter '
@@ -40,9 +40,6 @@ def create_heroes():
     Nightcrawler = Hero('Nightcrawler', 'mid 20s', 'dead but has been resurrected many times', 'Marvel', 'X-Men',
                         'superhuman agility, the ability to teleport, and adhesive hands and feet',
                         514, 'images/portraits/nightcrawler.jpg')
-    Thanos = Hero('Thanos', '1000', 'dead', 'Marvel', 'unknown',
-                  'all types of poison, disease, and telepathic attack',
-                  7600, 'images/portraits/thanos.jpg')
     Hawkeye = Hero('Hawkeye', '47', 'dead', 'Marvel', 'Avengers',
                    'Master archer and marksman Expert tactician, acrobat and hand-to-hand combatant Using a variety of '
                    'trick arrows As Goliath: Superhuman strength and durability Size and mass manipulation',
@@ -54,44 +51,69 @@ def create_heroes():
     Cyclops = Hero('Cyclops', '36', 'dead', 'Marvel', 'X-Men',
                    'Emits powerful beams of energy from his eyes',
                    108, 'images/portraits/cyclops.jpg')
-    Spiderman = Hero('Spiderman','28','dead','Marvel','Avengers',
+    Spiderman = Hero('Spiderman', '28', 'dead', 'Marvel', 'Avengers',
                      'Peter was bitten by a radioactive spider. The spider bite gave Peter spider-like powers with'
                      'super strength and reflexes',
                      200, 'images/portraits/spiderman.jpg')
 
-    return [Superman, Batman, Thor, Loki, Hulk, Daredevil, Deadpool, Wolverine, Captain_America, Iceman, Human_Torch,
-            Thanos, Nightcrawler, Hawkeye, Doctor_Strange, Cyclops, Spiderman]
+    return [Superman, Batman, Thor, Hulk, Daredevil, Deadpool, Wolverine, Captain_America, Iceman, Human_Torch,
+            Nightcrawler, Hawkeye, Doctor_Strange, Cyclops, Spiderman]
 
-def create_villians():
-    pass
+
+def create_villains():
+    Thanos = Hero('Thanos', '1000', 'dead', 'Marvel', 'unknown',
+                  'all types of poison, disease, and telepathic attack',
+                  7600, 'images/portraits/thanos.jpg')
+    Loki = Hero('Loki', 1000, 'deceased', 'Marvel', 'none',
+                'strength, durability, and longevity far superior to humans', 616, 'images/portraits/loki.jpg')
+
+    return [Loki, Thanos]
 
 
 def start():
-    choice = int(input('''(1) Search the superhero/villain index
-(2) Extras
-(3) Exit Program
+    choice = int(input('''(1) Search the superhero index
+(2) Search the villain index  
+(3) Extras
+(4) Exit Program
 
 Which option would you like to pick: '''))
     print()
 
     if choice == 1:
-        choice = str(input('Enter a superhero or villain name: '))
+        choice = str(input('Enter a superhero name: '))
         heroes = create_heroes()
-        for i in heroes:
-            if i.name.lower() == choice.lower():
+        for h in heroes:
+            if h.name.lower() == choice.lower():
                 print()
-                Hero.print_hero(i)
+                Hero.print_hero(h)
                 time.sleep(2)
-                Hero.show_image(i)
+                Hero.show_image(h)
                 start()
-        if choice.lower() != i.name.lower():
+        if choice.lower() != h.name.lower():
             print()
-            print(colors.red + 'Superhero or villain name not found!', colors.reset, '\n')
+            print(colors.red + 'Superhero name not found!', colors.reset, '\n')
             time.sleep(2)
             start()
         else:
             error_message()
     elif choice == 2:
+        choice = str(input('Enter a villain name: '))
+        villains = create_villains()
+        for v in villains:
+            if v.name.lower() == choice.lower():
+                print()
+                Villain.print_villain(v)
+                time.sleep(2)
+                Villain.show_image(v)
+                start()
+        if choice.lower() != v.name.lower():
+            print()
+            print(colors.red + 'Villain name not found!', colors.reset, '\n')
+            time.sleep(2)
+            start()
+        else:
+            error_message()
+    elif choice == 3:
         choice = int(input('''(1) View project releases/newest changes
 (2) Credits
 (3) Return to main menu
@@ -113,7 +135,7 @@ Which option would you like to pick: '''))
             sys.exit()
         else:
             error_message()
-    elif choice == 3:
+    elif choice == 4:
         sys.exit()
     else:
         error_message()

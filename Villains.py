@@ -1,7 +1,8 @@
 import time
 from PIL import Image
 
-class Villian:
+
+class Villain:
     def __init__(self, name, age, status, creator, team, powers, power_ranking, image_path):
         self.name = name
         self.age = age
@@ -12,14 +13,15 @@ class Villian:
         self.power_ranking = power_ranking
         self.image_path = image_path
 
-    def print_villian(self):
-        print('Superhero Name: ' + self.name + '\n'
-              'Age: ' + str(self.age) + '\n'
-              'Status: ' + self.status + '\n'
-              'Creator: ' + self.creator + '\n'
-              'Team: ' + self.team + '\n'
-              'Powers: ' + self.powers + '\n'
-              'Power Ranking: ' + str(self.power_ranking) + '\n')
+    def print_villain(self):
+        print('Villain Name: ' + self.name + '\n'
+                                               'Age: ' + str(self.age) + '\n'
+                                                                         'Status: ' + self.status + '\n'
+                                                                                                    'Creator: ' + self.creator + '\n'
+                                                                                                                                 'Team: ' + self.team + '\n'
+                                                                                                                                                        'Powers: ' + self.powers + '\n'
+                                                                                                                                                                                   'Power Ranking: ' + str(
+            self.power_ranking) + '\n')
 
     def show_image(self):
         img = Image.open(self.image_path)
