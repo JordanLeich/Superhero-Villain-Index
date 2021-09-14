@@ -1,7 +1,7 @@
 import sys
-from Heroes import *
-from Villains import *
 import webbrowser
+from modules.Heroes import *
+from modules.Villains import *
 from modules import colors
 
 
@@ -70,7 +70,7 @@ def create_villains():
     return [Loki, Thanos]
 
 
-def start():
+def start():  # sourcery no-metrics
     choice = int(input('''(1) Search the superhero index
 (2) Search the villain index  
 (3) Extras
@@ -81,16 +81,24 @@ Which option would you like to pick: '''))
 
     if choice == 1:
         choice = str(input('Enter a superhero name: '))
+        print()
         heroes = create_heroes()
         for h in heroes:
             if h.name.lower() == choice.lower():
-                print()
                 Hero.print_hero(h)
                 time.sleep(2)
-                Hero.show_image(h)
-                start()
+                choice = str(input('Would you like to view a photo of this superhero (yes / no): '))
+                print()
+                if choice.lower() in ['y', 'yes', 'sure']:
+                    Hero.show_image(h)
+                    time.sleep(2)
+                    start()
+                elif choice.lower() in ['n', 'no', 'nope']:
+                    time.sleep(1)
+                    start()
+                else:
+                    error_message()
         if choice.lower() != h.name.lower():
-            print()
             print(colors.red + 'Superhero name not found!', colors.reset, '\n')
             time.sleep(2)
             start()
@@ -98,16 +106,24 @@ Which option would you like to pick: '''))
             error_message()
     elif choice == 2:
         choice = str(input('Enter a villain name: '))
+        print()
         villains = create_villains()
         for v in villains:
             if v.name.lower() == choice.lower():
-                print()
                 Villain.print_villain(v)
                 time.sleep(2)
-                Villain.show_image(v)
-                start()
+                choice = str(input('Would you like to view a photo of this villain (yes / no): '))
+                print()
+                if choice.lower() in ['y', 'yes', 'sure']:
+                    Villain.show_image(v)
+                    time.sleep(2)
+                    start()
+                elif choice.lower() in ['n', 'no', 'nope']:
+                    time.sleep(1)
+                    start()
+                else:
+                    error_message()
         if choice.lower() != v.name.lower():
-            print()
             print(colors.red + 'Villain name not found!', colors.reset, '\n')
             time.sleep(2)
             start()
