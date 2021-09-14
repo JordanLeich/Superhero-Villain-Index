@@ -21,7 +21,7 @@
 
 
 # Description 💻
-An ultimate index that contains details and information regarding superheroes/villains.
+An ultimate index that contains details and information regarding superheroes/villains. Each hero/villain is also given a power ranking which determines how powerful they are compared to others.
 
 # Instructions ⚡
 ### Option #1
