@@ -37,10 +37,10 @@ def create_heroes():
                        'engulf his entire body in flames, fly, absorb fire harmlessly into his own body, and control '
                        'any nearby fire by sheer force of will',
                        126, 'images/portraits/humantorch.jpg')
-    Nightcrawler = Hero('Nightcrawler', 'mid 20s', 'dead but has been resurrected many times', 'Marvel', 'X-Men',
+    Nightcrawler = Hero('Nightcrawler', 'mid 20s', 'deceased but has been resurrected many times', 'Marvel', 'X-Men',
                         'superhuman agility, the ability to teleport, and adhesive hands and feet',
                         514, 'images/portraits/nightcrawler.jpg')
-    Hawkeye = Hero('Hawkeye', '47', 'dead', 'Marvel', 'Avengers',
+    Hawkeye = Hero('Hawkeye', '47', 'deceased', 'Marvel', 'Avengers',
                    'Master archer and marksman Expert tactician, acrobat and hand-to-hand combatant Using a variety of '
                    'trick arrows As Goliath: Superhuman strength and durability Size and mass manipulation',
                    51, 'images/portraits/hawkeye.jpg')
@@ -48,10 +48,10 @@ def create_heroes():
                           'Mastery of magic Utilizes mystical artifacts, such as the Cloak of Levitation and the Eye '
                           'of Agamotto Genius-level intellect Skilled martial artist Gifted physician and surgeon',
                           8600, 'images/portraits/drstrange.jpg')
-    Cyclops = Hero('Cyclops', '36', 'dead', 'Marvel', 'X-Men',
+    Cyclops = Hero('Cyclops', '36', 'deceased', 'Marvel', 'X-Men',
                    'Emits powerful beams of energy from his eyes',
                    108, 'images/portraits/cyclops.jpg')
-    Spiderman = Hero('Spiderman', '28', 'dead', 'Marvel', 'Avengers',
+    Spiderman = Hero('Spiderman', '28', 'deceased but brought back to life', 'Marvel', 'Avengers',
                      'Peter was bitten by a radioactive spider. The spider bite gave Peter spider-like powers with'
                      'super strength and reflexes',
                      200, 'images/portraits/spiderman.jpg')
@@ -61,13 +61,23 @@ def create_heroes():
 
 
 def create_villains():
-    Thanos = Hero('Thanos', '1000', 'dead', 'Marvel', 'unknown',
+    Thanos = Hero('Thanos', '1000', 'deceased', 'Marvel', 'unknown',
                   'all types of poison, disease, and telepathic attack',
                   7600, 'images/portraits/thanos.jpg')
     Loki = Hero('Loki', 1000, 'deceased', 'Marvel', 'none',
                 'strength, durability, and longevity far superior to humans', 616, 'images/portraits/loki.jpg')
+    Joker = Hero('Joker', 'around 40 to 50', 'deceased', 'DC', 'Suicide Squad',
+                 'no superhuman abilities', 25, 'images/portraits/joker.jpg')
+    Scorpion = Hero('Scorpion', 52, 'immortal', 'Mortal Kombat', 'Shirai Ryu',
+                    'ability to teleport, control fire', 5200, 'images/portraits/scorpion.jpg')
+    Shao_Kahn = Hero('Shao Kahn', 2228, 'immortal', 'Mortal Kombat', 'Emperor of the outworld',
+                     'utilize magic and has superhuman strength and durability. He is also able to charge at the '
+                     'opponent with considerable speed and power', 4900, 'images/portraits/shaokahn.jpg')
+    Ermac = Hero('Ermac', 20, 'immortal', 'Mortal Kombat', 'Outworld',
+                 'telekinesis and he also can manipulate soul energy to levitate and fire energy blasts', 850,
+                 'images/portraits/ermac.jpg')
 
-    return [Loki, Thanos]
+    return [Loki, Thanos, Joker, Scorpion, Shao_Kahn, Ermac]
 
 
 def start():  # sourcery no-metrics
@@ -91,7 +101,7 @@ Which option would you like to pick: '''))
                 print()
                 if choice.lower() in ['y', 'yes', 'sure']:
                     Hero.show_image(h)
-                    time.sleep(2)
+                    time.sleep(1)
                     start()
                 elif choice.lower() in ['n', 'no', 'nope']:
                     time.sleep(1)
@@ -116,7 +126,7 @@ Which option would you like to pick: '''))
                 print()
                 if choice.lower() in ['y', 'yes', 'sure']:
                     Villain.show_image(v)
-                    time.sleep(2)
+                    time.sleep(1)
                     start()
                 elif choice.lower() in ['n', 'no', 'nope']:
                     time.sleep(1)
