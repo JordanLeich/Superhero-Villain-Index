@@ -80,11 +80,26 @@ def create_characters():
 c = str
 
 
+def versus():
+    # TODO Finish the versus function
+    global c
+    first_character = str(input('Enter a Superhero/Villain name: '))
+    print()
+    second_character = str(input('Enter another Superhero/Villain name: '))
+    print()
+    characters = create_characters()
+
+    print('Unfinished...')
+    time.sleep(5)
+    sys.exit()
+
+
 def start():  # sourcery no-metrics
     global c
     choice = int(input('''(1) Search the Superhero/Villain index
-(2) Extras
-(3) Exit Program
+(2) Versus battles (Unfinished)
+(3) Extras
+(4) Exit Program
 
 Which option would you like to pick: '''))
     print()
@@ -115,6 +130,8 @@ Which option would you like to pick: '''))
         else:
             error_message()
     elif choice == 2:
+        versus()
+    elif choice == 3:
         choice = int(input('''(1) View project releases/newest changes
 (2) Credits
 (3) Return to main menu
@@ -136,7 +153,7 @@ Which option would you like to pick: '''))
             sys.exit()
         else:
             error_message()
-    elif choice == 3:
+    elif choice == 4:
         sys.exit()
     else:
         error_message()
