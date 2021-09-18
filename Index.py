@@ -27,10 +27,10 @@ def create_characters():
                           'superhuman strength and reflexes, enhanced senses and tracking abilities, and a special healing'
                           ' power that also slows his aging.',
                           79, 'images/portraits/wolverine.jpg')
-    Captain_America = Character('Captain America', 99, 'unknown', 'Marvel', 'Avengers',
+    Captain_America = Character('Captain America', 99, 'last seen alive but he has time traveled', 'Marvel', 'Avengers',
                                 'Peak-Human Condition, Accelerated Healing Factor, Enhanced Intelligence, Longevity',
                                 94, 'images/portraits/captainamerica.jpg')
-    Iceman = Character('Iceman', 'unknown', 'alive', 'Marvel', 'X-Men',
+    Iceman = Character('Iceman', 'mid 20 to 30s', 'alive', 'Marvel', 'X-Men',
                        'ability to manipulate ice and cold by freezing water vapor around him',
                        517, 'images/portraits/iceman.jpg')
     Human_Torch = Character('Human Torch', 'mid 20s', 'alive', 'Marvel', 'Fantastic Four',
@@ -56,7 +56,7 @@ def create_characters():
                           'Peter was bitten by a radioactive spider. The spider bite gave Peter spider-like powers with'
                           'super strength and reflexes',
                           200, 'images/portraits/spiderman.jpg')
-    Thanos = Character('Thanos', '1000', 'deceased', 'Marvel', 'unknown',
+    Thanos = Character('Thanos', '1000', 'deceased', 'Marvel', 'none',
                        'all types of poison, disease, and telepathic attack',
                        7600, 'images/portraits/thanos.jpg')
     Loki = Character('Loki', 1000, 'deceased', 'Marvel', 'none',
@@ -113,6 +113,18 @@ def versus():
     start()
 
 
+def request_a_character(choice):
+    with open("characters_to_add.txt", "a") as f:
+        f.write(str(choice) + '\n')
+        f.close()
+    print(colors.green + 'Name has been added to the list! You can now go to '
+                         'https://github.com/JordanLeich/Superhero-Villain-Index, fork the project, create '
+                         'a pull request, and your text file with hero/villain names will be reviewed by '
+                         'the developers.\n', colors.reset)
+    time.sleep(3)
+    start()
+
+
 def start():  # sourcery no-metrics
     choice = int(input('''(1) Search the Superhero/Villain index
 (2) Versus battles
@@ -144,7 +156,15 @@ Which option would you like to pick: '''))
         if choice.lower() != c.name.lower():
             print(colors.red + 'Superhero/Villain name not found!', colors.reset, '\n')
             time.sleep(2)
-            start()
+            write_to_text_choice = str(input(
+                'Would you like to add this superhero/villain name to a text file so that the developers know who to add (yes / no): '))
+            print()
+            if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
+                request_a_character(choice)
+            elif write_to_text_choice.lower() in ['n', 'no', 'nope']:
+                start()
+            else:
+                error_message()
         else:
             error_message()
     elif choice == 2:
@@ -152,8 +172,9 @@ Which option would you like to pick: '''))
     elif choice == 3:
         choice = int(input('''(1) View project releases/newest changes
 (2) Credits
-(3) Return to main menu
-(4) Exit Program
+(3) Request a hero/villain to be added
+(4) Return to main menu
+(5) Exit Program
 
 Which option would you like to pick: '''))
         print()
@@ -166,8 +187,12 @@ Which option would you like to pick: '''))
             time.sleep(2)
             start()
         elif choice == 3:
-            start()
+            choice = str(input('Enter the name of the hero/villain you would like added: '))
+            print()
+            request_a_character(choice)
         elif choice == 4:
+            start()
+        elif choice == 5:
             sys.exit()
         else:
             error_message()
