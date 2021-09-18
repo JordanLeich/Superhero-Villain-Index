@@ -71,6 +71,9 @@ def create_characters():
     Ermac = Character('Ermac', 20, 'immortal', 'Mortal Kombat', 'Outworld',
                       'telekinesis and he also can manipulate soul energy to levitate and fire energy blasts', 850,
                       'images/portraits/ermac.jpg')
+    Ironman = Character('Ironman',49,'dead', 'Marvel','Avengers','Tony Stark is a genius inventor and billionaire '
+                        'industrialist, who suits up in his armor of cutting-edge technology to become the super'
+                       'hero Iron Man. ',58000 ,'images/portraits/ironman.jpg' )
 
     return [Superman, Batman, Thor, Hulk, Daredevil, Deadpool, Wolverine, Captain_America, Iceman, Human_Torch,
             Nightcrawler, Hawkeye, Doctor_Strange, Cyclops, Spiderman, Thanos, Loki, Joker, Scorpion, Shao_Kahn,
