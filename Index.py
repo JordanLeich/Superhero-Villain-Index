@@ -79,6 +79,14 @@ def create_characters():
 
 c = str
 
+def battle(first_character, second_character):
+    if first_character.power_ranking > second_character.power_ranking:
+        return first_character.name
+    elif first_character.power_ranking < second_character.power_ranking:
+        return second_character.name
+    elif first_character.power_ranking == second_character.power_ranking:
+        return 'its a draw'
+
 
 def versus():
     # TODO Finish the versus function
@@ -89,6 +97,24 @@ def versus():
     print()
     characters = create_characters()
 
+    #find and store the first character
+    for c in characters:
+        if first_character.lower() == c.name.lower():
+            Character.print_hero(c)
+            first = c
+            time.sleep(2)
+
+
+    # find and store the second character
+    for c in characters:
+        if second_character.lower() == c.name.lower():
+            second = c
+            time.sleep(2)
+
+
+    print('Now starting the battle!')
+    winner = battle(first, second)
+    print('The winner is...: ' + winner)
     print('Unfinished...')
     time.sleep(5)
     sys.exit()
