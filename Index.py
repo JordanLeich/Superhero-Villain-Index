@@ -1,7 +1,7 @@
 import sys
 import webbrowser
-from modules.Characters import *
 from modules import colors
+from modules.Characters import *
 
 
 def create_characters():
@@ -13,7 +13,7 @@ def create_characters():
                        'images/portraits/batman.jpg')
     Thor = Character('Thor', 1500, 'alive', 'Marvel',
                      'Avengers',
-                     'superhuman strength, speed, agility, durability and immunity to most diseases', 493000,
+                     'superhuman strength, speed, agility, durability and immunity to most diseases', 4930,
                      'images/portraits/thor.jpg')
     Hulk = Character('Hulk', 49, 'alive', 'Marvel', 'Avengers', 'strength ', 6900, 'images/portraits/hulk.jpg')
     Daredevil = Character('Daredevil', 25, 'alive', 'Marvel', 'none',
@@ -77,33 +77,27 @@ def create_characters():
             Ermac]
 
 
-c = str
-
 def battle(first_character, second_character):
     if first_character.power_ranking > second_character.power_ranking:
         return first_character.name
     elif first_character.power_ranking < second_character.power_ranking:
         return second_character.name
     elif first_character.power_ranking == second_character.power_ranking:
-        return 'its a draw'
+        return 'its a draw!'
 
 
 def versus():
-    # TODO Finish the versus function
-    global c
     first_character = str(input('Enter a Superhero/Villain name: '))
     print()
     second_character = str(input('Enter another Superhero/Villain name: '))
     print()
     characters = create_characters()
 
-    #find and store the first character
+    # find and store the first character
     for c in characters:
         if first_character.lower() == c.name.lower():
-            Character.print_hero(c)
             first = c
             time.sleep(2)
-
 
     # find and store the second character
     for c in characters:
@@ -111,19 +105,17 @@ def versus():
             second = c
             time.sleep(2)
 
-
-    print('Now starting the battle!')
+    print('Now starting the battle!\n')
+    time.sleep(1)
     winner = battle(first, second)
-    print('The winner is...: ' + winner)
-    print('Unfinished...')
-    time.sleep(5)
-    sys.exit()
+    print(colors.green + 'The winner is... ' + winner + '!\n', colors.reset)
+    time.sleep(2)
+    start()
 
 
 def start():  # sourcery no-metrics
-    global c
     choice = int(input('''(1) Search the Superhero/Villain index
-(2) Versus battles (Unfinished)
+(2) Versus battles
 (3) Extras
 (4) Exit Program
 
