@@ -87,23 +87,53 @@ def battle(first_character, second_character):
 
 
 def versus():
-    first_character = str(input('Enter a Superhero/Villain name: '))
-    print()
-    second_character = str(input('Enter another Superhero/Villain name: '))
-    print()
+
     characters = create_characters()
 
+    # Prompt for character name
+    first_character = str(input('Enter a Superhero/Villain name: '))
+    print()
     # find and store the first character
     for c in characters:
         if first_character.lower() == c.name.lower():
             first = c
             time.sleep(2)
+            break
+    if first_character.lower() != c.name.lower():
+        print(colors.red + 'Superhero/Villain name not found!', colors.reset, '\n')
+        write_to_text_choice = str(input(
+            'Would you like to add this superhero/villain name to a text file so that the developers know who to add '
+            '(yes / no): '))
+        print()
+        if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
+            request_a_character(first_character)
+        elif write_to_text_choice.lower() in ['n', 'no', 'nope']:
+            start()
+        else:
+            error_message()
+
+    # Prompt for second character
+    second_character = str(input('Enter another Superhero/Villain name: '))
+    print()
 
     # find and store the second character
     for c in characters:
         if second_character.lower() == c.name.lower():
             second = c
             time.sleep(2)
+            break
+    if second_character.lower() != c.name.lower():
+        print(colors.red + 'Superhero/Villain name not found!', colors.reset, '\n')
+        write_to_text_choice = str(input(
+            'Would you like to add this superhero/villain name to a text file so that the developers know who to add '
+            '(yes / no): '))
+        print()
+        if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
+            request_a_character(second_character)
+        elif write_to_text_choice.lower() in ['n', 'no', 'nope']:
+            start()
+        else:
+            error_message()
 
     print('Now starting the battle!\n')
     time.sleep(1)
