@@ -223,6 +223,12 @@ Which option would you like to pick: '''))
         elif choice == 3:
             choice = str(input('Enter the name of the hero/villain you would like added: '))
             print()
+            characters = create_characters()
+            for c in characters:
+                if choice.lower() == c.name.lower():
+                    print(colors.red + 'This hero/villain is already included in the index!\n', colors.reset)
+                    time.sleep(1)
+                    start()
             request_a_character(choice)
         elif choice == 4:
             start()
