@@ -82,7 +82,30 @@ def create_characters():
             Ermac, Ironman]
 
 
-def battle(first_character, second_character):
+characters = create_characters()
+
+def findcharacter(character):
+
+    for c in characters:
+        if character.lower() == c.name.lower():
+            time.sleep(2)
+            return c
+
+    if character.lower() != c.name.lower():
+        print(colors.red + 'Superhero/Villain name not found!', colors.reset, '\n')
+        write_to_text_choice = str(input(
+            'Would you like to add this superhero/villain name to a text file so that the developers know who to add '
+            '(yes / no): '))
+        print()
+        if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
+            request_a_character(character)
+        elif write_to_text_choice.lower() in ['n', 'no', 'nope']:
+            start()
+        else:
+            error_message()
+
+
+def onevone(first_character, second_character):
     if first_character.power_ranking > second_character.power_ranking:
         return first_character.name
     elif first_character.power_ranking < second_character.power_ranking:
@@ -91,60 +114,99 @@ def battle(first_character, second_character):
         return 'its a draw!'
 
 
+def twovtwo(team1char1, team1char2, team2char1, team2char2):
+    team1power = team1char1.power_ranking + team1char2.power_ranking
+    team2power = team2char1.power_ranking + team2char2.power_ranking
+
+    if team1power > team2power:
+        return 'Team 1'
+    elif team1power < team2power:
+        return 'Team 2'
+    elif team1power == team2power:
+        return 'its a draw!'
+
+def freeforall(FFAcharacters):
+    # Perform free for all battle
+    # Pick a random 2 characters to fight in the list
+    # Remove the looser in the list of active characters
+    # Pick a random character in the list who hasn't fought yet
+    # Evaluate for the winner and repeat until there is only 1 character left
+
+    winner = 'winner'
+    return winner
+
+
 def versus():
-    characters = create_characters()
 
-    # Prompt for character name
-    first_character = str(input('Enter a Superhero/Villain name: '))
-    print()
-    # find and store the first character
-    for c in characters:
-        if first_character.lower() == c.name.lower():
-            first = c
-            time.sleep(2)
-            break
-    if first_character.lower() != c.name.lower():
-        print(colors.red + 'Superhero/Villain name not found!', colors.reset, '\n')
-        write_to_text_choice = str(input(
-            'Would you like to add this superhero/villain name to a text file so that the developers know who to add '
-            '(yes / no): '))
+    # Prompt for battle mode:
+    mode = input('1. 1v1\n'
+                 '2. 2v2\n'
+                 '3. Free for all\n')
+
+    if mode == '1':
+        # Prompt for character name
+        first_character = str(input('Enter a Superhero/Villain name: '))
         print()
-        if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
-            request_a_character(first_character)
-        elif write_to_text_choice.lower() in ['n', 'no', 'nope']:
-            start()
-        else:
-            error_message()
+        # find and store the first character
+        first = findcharacter(first_character)
 
-    # Prompt for second character
-    second_character = str(input('Enter another Superhero/Villain name: '))
-    print()
-
-    # find and store the second character
-    for c in characters:
-        if second_character.lower() == c.name.lower():
-            second = c
-            time.sleep(2)
-            break
-    if second_character.lower() != c.name.lower():
-        print(colors.red + 'Superhero/Villain name not found!', colors.reset, '\n')
-        write_to_text_choice = str(input(
-            'Would you like to add this superhero/villain name to a text file so that the developers know who to add '
-            '(yes / no): '))
+        # Prompt for second character
+        second_character = str(input('Enter another Superhero/Villain name: '))
         print()
-        if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
-            request_a_character(second_character)
-        elif write_to_text_choice.lower() in ['n', 'no', 'nope']:
-            start()
-        else:
-            error_message()
 
-    print('Now starting the battle!\n')
-    time.sleep(1)
-    winner = battle(first, second)
-    print(colors.green + 'The winner is... ' + winner + '!\n', colors.reset)
-    time.sleep(2)
-    start()
+        second = findcharacter(second_character)
+        # find and store the second character
+
+        print('Now starting the battle!\n')
+        time.sleep(1)
+        winner = onevone(first, second)
+        print(colors.green + 'The winner is... ' + winner + '!\n', colors.reset)
+        time.sleep(2)
+        start()
+
+    elif mode == '2':
+        print('2v2 mode selected')
+        # Prompt for characters on team 1
+        team1char1 = input('Enter first character for team 1: ')
+        team1char1 = findcharacter(team1char1)
+        team1char2 = input('Enter second character for team 1: ')
+        team1char2 = findcharacter(team1char2)
+        # Prompt for characters on team 2
+        team2char1 = input('Enter first character for team 2: ')
+        team2char1 = findcharacter(team2char1)
+        team2char2 = input('Enter second character for team 2: ')
+        team2char2 = findcharacter(team2char2)
+
+        winningteam = twovtwo(team1char1, team1char2, team2char1, team2char2)
+        print(colors.green + 'The winner is... ' + winningteam + '!\n', colors.reset)
+        time.sleep(2)
+        start()
+
+    elif mode == '3':
+        # Prompt for character select , store in a list and then prompt for more characters
+
+        print('Free for all mode selected\n')
+        ffacharacters = []
+        selecting = True
+        while selecting or len(ffacharacters) < 3:
+            charname = input('Enter a character name for the free for all:\n')
+            charname = findcharacter(charname)
+            ffacharacters.append(charname)
+            if len(ffacharacters) < 3:
+                continue
+            keepselecting = input('Select another character? Y/ N\n')
+            if keepselecting.lower() in ['y', 'yes', 'sure']:
+                selecting = True
+            elif keepselecting.lower() in ['n', 'no', 'nope']:
+                selecting = False
+
+        # Start free for all
+        winner = freeforall(ffacharacters)
+        print('The winner is :' + winner)
+
+    else:
+        error_message()
+
 
 
 def request_a_character(choice):
