@@ -195,6 +195,16 @@ def create_characters():
     ironman = Character('Ironman', 49, 'alive', 'Marvel', 'Avengers', 6, 6, 4, 6, 5, 6,
                         'Super-Genius Intelligence, Energy Blasts, Thruster Attacks, Pulse Blasts, Repulsor Shot',
                         150, 'images/portraits/ironman.jpg')
+    pyro = Character('Pyro', 'unknown', 'alive', 'Marvel', 'unknown', 6, 7, 5, 4, 5, 4,
+                     'psionic power to manipulate flame by shaping it as he desires, increasing or decreasing its heat, '
+                     'intensity and size, he cannot actually create fire himself',
+                     90, 'images/portraits/pyro.jpg')
+    silver_surfer = Character('Silver Surfer', 'unknown', 'alive', 'Marvel', 'Fantastic Four', 6, 8, 6, 8, 7, 6,
+                              'Power Cosmic, granting him superhuman strength, endurance, and senses and the ability to absorb and manipulate the universes ambient energy.',
+                              125, 'images/portraits/silversurfer.jpg')
+    venom = Character('Venom', 'unknown', 'alive', 'Marvel', 'unknown', 7, 7, 6, 5, 8, 7,
+                      'All powers of the symbiotes first human host, Spider-Man Limited shapeshifting and camouflage Symbiotes autonomous defense capabilities Undetectable by Spider-Mans (Spider-sense)',
+                      105, 'images/portraits/venom.jpg')
 
     # DC Characters
 
@@ -228,7 +238,7 @@ def create_characters():
             domino, rogue, gambit,
             captain_britain, jubilee, kitty_pryde, nightcrawler, cable, juggernaut, daredevil, doctor_strange, hawkeye,
             hulk, spiderman, thor, captainamerica, loki, thanos, ironman, batman, superman, joker, ermac, scorpion,
-            shaokahn]
+            shaokahn, silver_surfer, venom, pyro]
 
 
 characters = create_characters()
