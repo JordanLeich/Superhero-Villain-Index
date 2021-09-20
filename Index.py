@@ -4,6 +4,7 @@ from modules import colors
 from modules.Characters import *
 import random
 
+
 def create_characters():
     # Marvel Characters
 
@@ -14,33 +15,33 @@ def create_characters():
     darwin = Character('Darwin', 'Unknown', 'alive', 'Marvel', 'X-Men', 5, 5, 5, 5, 5, 5,
                        'Superior Adaptation, Proactive Adaptation, Death Harbinger',
                        150, 'images/portraits/darwin.jpg')
-    marvelgirl = Character('Marvel Girl', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 7, 4, 3, 6, 3,
-                           'Telepathy, Empathy, Telekinesis, Time Manipulation',
-                           125, 'images/portraits/marvel_girl.jpg')
+    marvel_girl = Character('Marvel Girl', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 7, 4, 3, 6, 3,
+                            'Telepathy, Empathy, Telekinesis, Time Manipulation',
+                            125, 'images/portraits/marvel_girl.jpg')
     warpath = Character('Warpath', 'Unknown', 'alive', 'Marvel', 'Hellfire Club', 6, 1, 5, 3, 5, 5,
                         'Superhuman Physical Abilities, Flight, Regenerative Healing, Apache Shaman Abilities',
                         125, 'images/portraits/warpath.jpg')
     havok = Character('Havok', 'Unknown', 'alive', 'Marvel', 'X-Men', 3, 6, 3, 3, 2, 2,
                       'Ambient Energy Conversion, Energy Absorption, Plasma Emanation, Flight',
                       100, 'images/portraits/havok.jpg')
-    multipleman = Character('Multiple Man', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 5, 3, 3, 4, 3,
-                            'Kinetic Duplication, Duplication Experience Transference, Duplication Healing',
-                            100, 'images/portraits/multiple_man.jpg')
+    multiple_man = Character('Multiple Man', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 5, 3, 3, 4, 3,
+                             'Kinetic Duplication, Duplication Experience Transference, Duplication Healing',
+                             100, 'images/portraits/multiple_man.jpg')
     colossus = Character('Colossus', 'Unknown', 'alive', 'Marvel', 'X-Men', 6, 0, 4, 3, 3, 7,
                          'Enhanced Mutant Physiology, Organic Steel Form, Superhuman Strength',
                          75, 'images/portraits/colossus.jpg')
     blob = Character('Blob', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 6, 2, 3, 2, 2, 4,
                      'Superhuman Durability and Strength, Pain Immunity, Trapping, Projectile Redirection, Mass Shifting',
                      50, 'images/portraits/blob.png')
-    sabretooth = Character('Sabretooth', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 1, 7, 2, 2, 4,
-                           'Regenerative Healing Factor, Superhuman Senses, Adamantium Claws, Fangs',
-                           60, 'images/portraits/sabretooth.jpg')
+    sabre_tooth = Character('Sabretooth', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 1, 7, 2, 2, 4,
+                            'Regenerative Healing Factor, Superhuman Senses, Adamantium Claws, Fangs',
+                            60, 'images/portraits/sabretooth.jpg')
     cyclops = Character('Cyclops', 'Unknown', 'alive', 'Marvel', 'X-Men', 3, 7, 3, 5, 4, 4,
                         'Optic Blast, Trajectory Bending, Spatial Awareness, Energy Resistance',
                         45, 'images/portraits/cyclops.jpg')
-    silversamurai = Character('Silver Samurai', 'Unknown', 'alive', 'Marvel', 'Big Hero 6', 4, 5, 6, 3, 2, 3,
-                              'Tachyon Field, Kenjutsu, Bushido, Martial Arts',
-                              65, 'images/portraits/silver_samurai.jpg')
+    silver_samurai = Character('Silver Samurai', 'Unknown', 'alive', 'Marvel', 'Big Hero 6', 4, 5, 6, 3, 2, 3,
+                               'Tachyon Field, Kenjutsu, Bushido, Martial Arts',
+                               65, 'images/portraits/silver_samurai.jpg')
     mystique = Character('Mystique', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 4, 0, 5, 4, 2, 2,
                          'Metamorph, Psychic Defense, Accelerated Healing, Toxin and Disease Resistance, Metamorphic Adaptation',
                          40, 'images/portraits/mystique.jpg')
@@ -48,48 +49,48 @@ def create_characters():
                         'Acoustikinesis, Sonic Scream, Flight, Sonar, Sonic Shield, Vocal Disorientation, Vocal Trance, Sound Immunity, Superhuman Vocal Stamina',
                         75, 'images/portraits/banshee.jpg')
     magneto = Character('Magneto', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 2, 6, 4, 5, 5, 2,
-                        'Magnetokinesis, Magnetic Force-Fields, Magnetic Armor, Flight, Metal Manipulation, Organic Iron Manipulation, Electromagnetic Spectrum Manipulation',
+                        'Magneto-kinesis, Magnetic Force-Fields, Magnetic Armor, Flight, Metal Manipulation, Organic Iron Manipulation, Electromagnetic Spectrum Manipulation',
                         40, 'images/portraits/magneto.jpg')
-    professorx = Character('Professor X', 'Unknown', 'alive', 'Marvel', 'X-Men', 0, 3, 1, 7, 0, 0,
-                           'Telepathy, Telepathic Illusions, Telekinesis, Astral Projection, Mental Shield, Psionic Blasts, Mental Detection, Mind Possession, Mind Control',
-                           25, 'images/portraits/professor_x.jpg')
+    professor_x = Character('Professor X', 'Unknown', 'alive', 'Marvel', 'X-Men', 0, 3, 1, 7, 0, 0,
+                            'Telepathy, Telepathic Illusions, Telekinesis, Astral Projection, Mental Shield, Psionic Blasts, Mental Detection, Mind Possession, Mind Control',
+                            25, 'images/portraits/professor_x.jpg')
     callisto = Character('Callisto', 'Unknown', 'alive', 'Marvel', 'Morlocks', 4, 2, 7, 4, 5, 4,
                          'Superhuman Senses, Regenerative Healing, Intuitive Tactical Ability',
                          35, 'images/portraits/callisto.jpg')
-    laurakinney = Character('X-23', 'Unknown', 'alive', 'Marvel', 'X-Men', 7, 3, 7, 5, 7, 7,
-                            'Regenerative Healing Factor, Bone Claws, Psychic Defenses, Chemical Immunity, Disease Immunity, Superhuman Senses',
-                            80, 'images/portraits/laura_kinney.jpg')
+    laura_kinney = Character('X-23', 'Unknown', 'alive', 'Marvel', 'X-Men', 7, 3, 7, 5, 7, 7,
+                             'Regenerative Healing Factor, Bone Claws, Psychic Defenses, Chemical Immunity, Disease Immunity, Superhuman Senses',
+                             80, 'images/portraits/laura_kinney.jpg')
     iceman = Character('Iceman', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 5, 3, 2, 4, 3,
                        'Thermokinesis, Cryokinesis, Organic Ice-Form, Hydrokinesis, Cellular Replacement',
                        45, 'images/portraits/iceman.jpg')
     blink = Character('Blink', 'Unknown', 'alive', 'Marvel', 'X-Men', 2, 4, 4, 3, 7, 2,
                       'Teleportation Warp Portals, Trans-Spatial Displacement Bills',
                       60, 'images/portraits/blink.jpg')
-    omegared = Character('Omega Red', 'Unknown', 'alive', 'Marvel', 'Red Mafia', 5, 4, 6, 4, 3, 5,
-                         'Death Factor, Life Force Absorption, Superhuman Strength, Regenerative Healing Factor',
-                         80, 'images/portraits/omega_red.jpg')
-    mistersinister = Character('Mister Sinister', 'Unknown', 'alive', 'Marvel', 'Roxxon', 6, 6, 6, 7, 5, 5,
-                               'Genetic Enhancements Using Mutant DNA, Endopathy, Cellular Shape-Shifting, Regenerative Healing Factor, Superhuman Physical Condition, Telepathy'
-                               'Telekinesis, Technology Interface, Teleportation', 95,
-                               'images/portraits/mister_sinister.jpg')
-    shadowking = Character('Shaodw King', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 7, 5, 1, 3, 7, 1,
-                           'Telepathy, Astral Form, Anchor Host',
-                           100, 'images/portraits/shadow_king.jpg')
+    omega_red = Character('Omega Red', 'Unknown', 'alive', 'Marvel', 'Red Mafia', 5, 4, 6, 4, 3, 5,
+                          'Death Factor, Life Force Absorption, Superhuman Strength, Regenerative Healing Factor',
+                          80, 'images/portraits/omega_red.jpg')
+    mister_sinister = Character('Mister Sinister', 'Unknown', 'alive', 'Marvel', 'Roxxon', 6, 6, 6, 7, 5, 5,
+                                'Genetic Enhancements Using Mutant DNA, Endopathy, Cellular Shape-Shifting, Regenerative Healing Factor, Superhuman Physical Condition, Telepathy'
+                                'Telekinesis, Technology Interface, Teleportation', 95,
+                                'images/portraits/mister_sinister.jpg')
+    shadow_king = Character('Shadow King', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 7, 5, 1, 3, 7, 1,
+                            'Telepathy, Astral Form, Anchor Host', 100, 'images/portraits/shadow_king.jpg')
     beast = Character('Beast', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 1, 4, 6, 3, 4,
                       'Genetic Atavism, Superhuman Physical Traits, Regenerative Healing Factor, Superhuman Senses, Razor-Sharp Claws and Fangs',
                       60, 'images/portraits/beast.jpg')
     daken = Character('Daken', 'Unknown', 'alive', 'Marvel', 'X-Factor', 4, 0, 7, 2, 3, 4,
                       'Mutant Physiology, Regenerative Healing Factor, Disease Immunity, Superhuman Physical Traits, Retractable Bone Claws, Anti-Healing Factor Claws',
                       70, 'images/portraits/daken.jpg')
-    deathbird = Character('Deathbird', 'Unknown', 'alive', 'Marvel', 'The Brood Horsemen of Apocalypse Starforce', 3, 1,
-                          6, 3, 2, 4, 'Claws, Natural Winged Flight',
-                          75, 'images/portraits/deathbird.jpg')
-    emmafrost = Character('Emma Frost', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 7, 7, 6, 7, 4, 5,
-                          'Telepathy, Psionic Shield, Astral Projection, Mind Control, Mental Alteration, Psionic Blasts',
-                          125, 'images/portraits/emma_frost.jpg')
-    blackheart = Character('Blackheart', 'Unknown', 'alive', 'Marvel', 'Hellfire Club', 7, 6, 5, 6, 6, 6,
-                           'Superhuman Physical Traits, Telepathy, Levitation, Interdimensional Teleportation, Size Alteration, Physical Alteration, Regenerative Healing,'
-                           'Energy Generation, Soul Capturing, Mind Control', 150, 'images/portraits/blackheart.jpg')
+    death_bird = Character('Deathbird', 'Unknown', 'alive', 'Marvel', 'The Brood Horsemen of Apocalypse Starforce', 3,
+                           1,
+                           6, 3, 2, 4, 'Claws, Natural Winged Flight',
+                           75, 'images/portraits/deathbird.jpg')
+    emma_frost = Character('Emma Frost', 'Unknown', 'alive', 'Marvel', 'Brotherhood of Mutants', 7, 7, 6, 7, 4, 5,
+                           'Telepathy, Psionic Shield, Astral Projection, Mind Control, Mental Alteration, Psionic Blasts',
+                           125, 'images/portraits/emma_frost.jpg')
+    black_heart = Character('Blackheart', 'Unknown', 'alive', 'Marvel', 'Hellfire Club', 7, 6, 5, 6, 6, 6,
+                            'Superhuman Physical Traits, Telepathy, Levitation, Interdimensional Teleportation, Size Alteration, Physical Alteration, Regenerative Healing,'
+                            'Energy Generation, Soul Capturing, Mind Control', 150, 'images/portraits/blackheart.jpg')
     angel = Character('Angel', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 1, 3, 3, 3, 3,
                       'Wings, Flight, Aerial Adaptation, Regenerative Healing Factor, Hypersonic Scream',
                       50, 'images/portraits/angel.jpg')
@@ -108,21 +109,21 @@ def create_characters():
     storm = Character('Storm', 'Unknown', 'alive', 'Marvel', 'X-Men', 5, 6, 5, 5, 6, 4,
                       'Atmokinesis, Telepathic Resistance, Earth Link, Thermal Variance, Energy Vision, Magical Potential',
                       85, 'images/portraits/storm.jpg')
-    mrfantastic = Character('Mr. Fantastic', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 6, 1, 3, 6, 2, 3,
-                            'Plasticity, Elongation, Shape Changing, Superhuman Intellect',
-                            75, 'images/portraits/mister_fantastic.jpg')
-    invisiblewoman = Character('Invisible Woman', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 5, 7, 4, 5, 3, 3,
-                               'Invisibility, Psionic Force Fields, Cosmic Ray Blasts',
-                               75, 'images/portraits/invisible_woman.jpg')
-    thething = Character('The Thing', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 6, 1, 4, 2, 2, 6,
-                         'Rock-like Sin, Superhuman Strength, De-Aging Abilities, Sensory Adaptation',
-                         60, 'images/portraits/the_thing.jpg')
+    mr_fantastic = Character('Mr. Fantastic', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 6, 1, 3, 6, 2, 3,
+                             'Plasticity, Elongation, Shape Changing, Superhuman Intellect',
+                             75, 'images/portraits/mister_fantastic.jpg')
+    invisible_woman = Character('Invisible Woman', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 5, 7, 4, 5, 3, 3,
+                                'Invisibility, Psionic Force Fields, Cosmic Ray Blasts',
+                                75, 'images/portraits/invisible_woman.jpg')
+    the_thing = Character('The Thing', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 6, 1, 4, 2, 2, 6,
+                          'Rock-like Sin, Superhuman Strength, De-Aging Abilities, Sensory Adaptation',
+                          60, 'images/portraits/the_thing.jpg')
     humantorch = Character('Human Torch', 'Unknown', 'alive', 'Marvel', 'Fantastic Four', 3, 6, 4, 4, 5, 3,
                            'Pyrogenesis, Plasma Form, Pyrokinesis, Nova Flame, Flight, Thermokinesis',
                            60, 'images/portraits/human_torch.jpg')
-    doctordoom = Character('Doctor Doom', 'Unknown', 'alive', 'Marvel', 'Legion of Doom', 6, 6, 4, 6, 5, 4,
-                           'Magic, Mystical Blasts, Psionics, Super-Genius Intelligence, Mind Transference, Healing, Dimensional Travel, Spell Casting',
-                           75, 'images/portraits/doctor_doom.jpg')
+    doctor_doom = Character('Doctor Doom', 'Unknown', 'alive', 'Marvel', 'Legion of Doom', 6, 6, 4, 6, 5, 4,
+                            'Magic, Mystical Blasts, Psionics, Super-Genius Intelligence, Mind Transference, Healing, Dimensional Travel, Spell Casting',
+                            75, 'images/portraits/doctor_doom.jpg')
     forge = Character('Forge', 'Unknown', 'alive', 'Marvel', 'X-Men', 2, 1, 4, 4, 2, 2, 'Intuitive Genius, Sorcery',
                       55, 'images/portraits/forge.jpg')
     bishop = Character('Bishop', 'Unknown', 'alive', 'Marvel', 'X-Men', 4, 7, 5, 4, 2, 3,
@@ -146,15 +147,15 @@ def create_characters():
     gambit = Character('Gambit', 'Unknown', 'alive', 'Marvel', 'X-Men', 3, 5, 4, 3, 3, 3,
                        'Molecular Acceleration, Accelerated Regeneration, Hypnotic Charm, Mutant Energy Control',
                        60, 'images/portraits/gambit.jpg')
-    captainbritain = Character('Captain Britain', 'Unknown', 'alive', 'Marvel', 'Secret Avengers', 6, 3, 4, 5, 4, 6,
-                               'Interdimensional Energy Blasts, Superhuman Strength, Flight, Genius Intelligence',
-                               90, 'images/portraits/captain_britain.jpg')
+    captain_britain = Character('Captain Britain', 'Unknown', 'alive', 'Marvel', 'Secret Avengers', 6, 3, 4, 5, 4, 6,
+                                'Interdimensional Energy Blasts, Superhuman Strength, Flight, Genius Intelligence',
+                                90, 'images/portraits/captain_britain.jpg')
     jubilee = Character('Jubilee', 'Unknown', 'alive', 'Marvel', 'X-Men', 5, 7, 5, 4, 4, 4,
                         'Explosive Light Blasts, Energy Plasmoids, Psionic Shields',
                         90, 'images/portraits/jubilee.jpg')
-    kittypryde = Character('Kitty Pryde', 'Unknown', 'alive', 'Marvel', 'X-Men', 3, 2, 4, 4, 2, 2,
-                           'Phasing, Intagibility, Telepathic Resistance, Black Vortex',
-                           65, 'images/portraits/kitty_pryde.jpg')
+    kitty_pryde = Character('Kitty Pryde', 'Unknown', 'alive', 'Marvel', 'X-Men', 3, 2, 4, 4, 2, 2,
+                            'Phasing, Intagibility, Telepathic Resistance, Black Vortex',
+                            65, 'images/portraits/kitty_pryde.jpg')
     nightcrawler = Character('Nightcrawler', 'Unknown', 'alive', 'Marvel', 'X-Men', 5, 5, 5, 4, 7, 4,
                              'Teleportation, Acrobatics, Spatial Awareness, Tail Grab',
                              85, 'images/portraits/nightcrawler.jpg')
@@ -167,9 +168,9 @@ def create_characters():
     daredevil = Character('Daredevil', 'Unknown', 'alive', 'Marvel', 'Defenders', 2, 4, 5, 3, 2, 3,
                           'Superhuman Sensory, Superhuman Reflexes, Blindsight, Radar Sense, Acrobats, Martial Arts',
                           60, 'images/portraits/daredevil.jpg')
-    doctorstrange = Character('Doctor Strange', 'Unknown', 'alive', 'Marvel', 'Avengers', 3, 7, 3, 5, 6, 3,
-                              'Sorcery, Energy Blasts, Astral Projection, Transmutation, Telekinesis, Telepathy, Flight, Protective Shields, Universal Awareness',
-                              100, 'images/portraits/drstrange.jpg')
+    doctor_strange = Character('Doctor Strange', 'Unknown', 'alive', 'Marvel', 'Avengers', 3, 7, 3, 5, 6, 3,
+                               'Sorcery, Energy Blasts, Astral Projection, Transmutation, Telekinesis, Telepathy, Flight, Protective Shields, Universal Awareness',
+                               100, 'images/portraits/drstrange.jpg')
     hawkeye = Character('Hawkeye', 'Unknown', 'alive', 'Marvel', 'Avengers', 3, 1, 5, 3, 3, 3,
                         'Master Archery, Superhuman Sight, Master Marksmanship, Master Martial Arts, Weapon Proficiency',
                         60, 'images/portraits/hawkeye.jpg')
@@ -191,7 +192,8 @@ def create_characters():
     thanos = Character('Thanos', 'Unknown', 'alive', 'Marvel', 'No Affiliation', 7, 7, 6, 6, 7, 7,
                        'Godlike Strength, Near-Invulnerability, Regenerative Healing Factor, Energy Manipulation, Telepathy, Magic, Teleportation',
                        200, 'images/portraits/thanos.jpg')
-    ironman = Character('Ironman', 49, 'alive', 'Marvel', 'Avengers', 6, 6, 4, 6, 5, 6, 'Super-Genius Intelligence, Energy Blasts, Thruster Attacks, Pulse Blasts, Repulsor Shot',
+    ironman = Character('Ironman', 49, 'alive', 'Marvel', 'Avengers', 6, 6, 4, 6, 5, 6,
+                        'Super-Genius Intelligence, Energy Blasts, Thruster Attacks, Pulse Blasts, Repulsor Shot',
                         150, 'images/portraits/ironman.jpg')
 
     # DC Characters
@@ -218,20 +220,21 @@ def create_characters():
                          'Charging Spikes, Wrath Hammer, Explosive Ball, Emperor\'s Shield, Mystic Choke, Hammer Throw, Ground Shatter',
                          150, 'images/portraits/shaokahn.jpg')
 
-    return [wolverine, darwin, marvelgirl, warpath, havok, multipleman, colossus, blob, sabretooth, cyclops,
-            silversamurai, mystique, banshee, magneto, professorx, callisto, laurakinney, iceman, blink, omegared,
-            mistersinister, shadowking,
-            beast, daken, deathbird, emmafrost, blackheart, angel, gladiator, mimic, apocalypse, deadpool, storm,
-            mrfantastic, invisiblewoman, thething, humantorch, doctordoom, forge, bishop, psylocke, sunspot, sage,
+    return [wolverine, darwin, marvel_girl, warpath, havok, multiple_man, colossus, blob, sabre_tooth, cyclops,
+            silver_samurai, mystique, banshee, magneto, professor_x, callisto, laura_kinney, iceman, blink, omega_red,
+            mister_sinister, shadow_king,
+            beast, daken, death_bird, emma_frost, black_heart, angel, gladiator, mimic, apocalypse, deadpool, storm,
+            mr_fantastic, invisible_woman, the_thing, humantorch, doctor_doom, forge, bishop, psylocke, sunspot, sage,
             domino, rogue, gambit,
-            captainbritain, jubilee, kittypryde, nightcrawler, cable, juggernaut, daredevil, doctorstrange, hawkeye,
-            hulk, spiderman, thor, captainamerica, loki, thanos, ironman, batman, superman, joker, ermac, scorpion, shaokahn]
+            captain_britain, jubilee, kitty_pryde, nightcrawler, cable, juggernaut, daredevil, doctor_strange, hawkeye,
+            hulk, spiderman, thor, captainamerica, loki, thanos, ironman, batman, superman, joker, ermac, scorpion,
+            shaokahn]
 
 
 characters = create_characters()
 
-def findcharacter(character):
 
+def find_character(character):
     for c in characters:
         if character.lower() == c.name.lower():
             time.sleep(2)
@@ -250,22 +253,26 @@ def findcharacter(character):
         else:
             error_message()
 
-def charactertotal(character):  # Gets total value from all of the characters traits
+
+def character_total(character):  # Gets total value from all of the characters traits
     return character.durability + character.energy + character.fighting + character.intelligence + character.speed + character.strength
 
-def onevone(first_character, second_character):
-    if first_character.fighting > second_character.fighting:    # Checks which fighter has a higher fighting stat to get a slight bonus
-        char1_total = charactertotal(first_character) + random.randint(0, 6) + random.randint(0, 6)  # bonuses are distributed randomly in order to give the character with less fighting stats a chance
-        char2_total = charactertotal(second_character) + random.randint(1, 6)   # character with lower fighting stat only gets 1 bonus but at least it cannot be a 0
-        if char1_total > char2_total:   # compare the new total of both characters
+
+def one_vs_one(first_character, second_character):
+    if first_character.fighting > second_character.fighting:  # Checks which fighter has a higher fighting stat to get a slight bonus
+        char1_total = character_total(first_character) + random.randint(0, 6) + random.randint(0,
+                                                                                               6)  # bonuses are distributed randomly in order to give the character with less fighting stats a chance
+        char2_total = character_total(second_character) + random.randint(1,
+                                                                         6)  # character with lower fighting stat only gets 1 bonus but at least it cannot be a 0
+        if char1_total > char2_total:  # compare the new total of both characters
             return first_character.name
         if char1_total < char2_total:
             return second_character.name
         else:
             return "It's a draw!"
     elif first_character.fighting < second_character.fighting:
-        char1_total = charactertotal(first_character) + random.randint(1, 6)
-        char2_total = charactertotal(second_character) + random.randint(0, 6) + random.randint(0, 6)
+        char1_total = character_total(first_character) + random.randint(1, 6)
+        char2_total = character_total(second_character) + random.randint(0, 6) + random.randint(0, 6)
         if char1_total > char2_total:
             return first_character.name
         if char1_total < char2_total:
@@ -273,8 +280,8 @@ def onevone(first_character, second_character):
         else:
             return "It's a draw!"
     elif first_character.fighting == second_character.fighting:  # if both characters have equal fighting stat there is a random bonus given to each fighter that is added to their total
-        char1_total = charactertotal(first_character) + random.randint(0, 6)
-        char2_total = charactertotal(second_character) + random.randint(0, 6)
+        char1_total = character_total(first_character) + random.randint(0, 6)
+        char2_total = character_total(second_character) + random.randint(0, 6)
         if char1_total > char2_total:
             return first_character.name
         if char1_total < char2_total:
@@ -283,9 +290,11 @@ def onevone(first_character, second_character):
             return "It's a draw!"
 
 
-def twovtwo(team1char1, team1char2, team2char1, team2char2):
-    team1power = charactertotal(team1char1) + charactertotal(team1char2)    # grabbed total stats of both characters for team 1
-    team2power = charactertotal(team2char1) + charactertotal(team2char2)    # grabbed total stats of both characters for team 2
+def two_vs_two(team1char1, team1char2, team2char1, team2char2):
+    team1power = character_total(team1char1) + character_total(
+        team1char2)  # grabbed total stats of both characters for team 1
+    team2power = character_total(team2char1) + character_total(
+        team2char2)  # grabbed total stats of both characters for team 2
 
     if team1power > team2power:  # apply bonuses to teams the same way we did for 1v1
         team1_total = team1power + random.randint(0, 6) + random.randint(0, 6)
@@ -315,7 +324,10 @@ def twovtwo(team1char1, team1char2, team2char1, team2char2):
         else:
             return "It's a draw!"
 
-def freeforall(FFAcharacters):
+
+def free_for_all(ffa_characters):
+    # TODO Fix ffa_characters not returning the correct winner in a ffa battle.
+    # sourcery skip: inline-immediately-returned-variable
     # Perform free for all battle
     # Pick a random 2 characters to fight in the list
     # Remove the looser in the list of active characters
@@ -327,76 +339,77 @@ def freeforall(FFAcharacters):
 
 
 def versus():
-
     # Prompt for battle mode:
     mode = input('1. 1v1\n'
                  '2. 2v2\n'
-                 '3. Free for all\n')
+                 '3. Free for all\n\n'
+                 'Which versus battle mode would you like to pick: ')
+    print()
 
     if mode == '1':
+        print(colors.green + '1v1 mode selected\n', colors.reset)
         # Prompt for character name
         first_character = str(input('Enter a Superhero/Villain name: '))
         print()
         # find and store the first character
-        first = findcharacter(first_character)
+        first = find_character(first_character)
 
         # Prompt for second character
         second_character = str(input('Enter another Superhero/Villain name: '))
         print()
 
-        second = findcharacter(second_character)
+        second = find_character(second_character)
         # find and store the second character
 
         print('Now starting the battle!\n')
         time.sleep(1)
-        winner = onevone(first, second)
+        winner = one_vs_one(first, second)
         print(colors.green + 'The winner is... ' + winner + '!\n', colors.reset)
         time.sleep(2)
         start()
 
     elif mode == '2':
-        print('2v2 mode selected')
+        print(colors.green + '2v2 mode selected\n', colors.reset)
         # Prompt for characters on team 1
         team1char1 = input('Enter first character for team 1: ')
-        team1char1 = findcharacter(team1char1)
+        team1char1 = find_character(team1char1)
         team1char2 = input('Enter second character for team 1: ')
-        team1char2 = findcharacter(team1char2)
+        team1char2 = find_character(team1char2)
         # Prompt for characters on team 2
         team2char1 = input('Enter first character for team 2: ')
-        team2char1 = findcharacter(team2char1)
+        team2char1 = find_character(team2char1)
         team2char2 = input('Enter second character for team 2: ')
-        team2char2 = findcharacter(team2char2)
-
-        winningteam = twovtwo(team1char1, team1char2, team2char1, team2char2)
-        print(colors.green + 'The winner is... ' + winningteam + '!\n', colors.reset)
+        print()
+        team2char2 = find_character(team2char2)
+        winning_team = two_vs_two(team1char1, team1char2, team2char1, team2char2)
+        print(colors.green + 'The winner is... ' + winning_team + '!\n', colors.reset)
         time.sleep(2)
         start()
 
     elif mode == '3':
         # Prompt for character select , store in a list and then prompt for more characters
-
-        print('Free for all mode selected\n')
-        ffacharacters = []
+        print(colors.green + 'Free for all mode selected\n', colors.reset)
+        ffa_characters = []
         selecting = True
-        while selecting or len(ffacharacters) < 3:
-            charname = input('Enter a character name for the free for all:\n')
-            charname = findcharacter(charname)
-            ffacharacters.append(charname)
-            if len(ffacharacters) < 3:
+        while selecting or len(ffa_characters) < 3:
+            char_name = input('Enter a character name for the free for all: ')
+            print()
+            char_name = find_character(char_name)
+            ffa_characters.append(char_name)
+            if len(ffa_characters) < 3:
                 continue
-            keepselecting = input('Select another character? Y/ N\n')
-            if keepselecting.lower() in ['y', 'yes', 'sure']:
+            keep_selecting = input('Select another character (yes / no): ')
+            if keep_selecting.lower() in ['y', 'yes', 'sure']:
                 selecting = True
-            elif keepselecting.lower() in ['n', 'no', 'nope']:
+            elif keep_selecting.lower() in ['n', 'no', 'nope']:
                 selecting = False
 
         # Start free for all
-        winner = freeforall(ffacharacters)
+        winner = free_for_all(ffa_characters)
         print('The winner is :' + winner)
 
     else:
         error_message()
-
 
 
 def request_a_character(choice):

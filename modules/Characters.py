@@ -33,4 +33,3 @@ class Character:
         img = Image.open(self.image_path)
         img.show(self.image_path)
         time.sleep(2)
-
