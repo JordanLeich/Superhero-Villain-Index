@@ -350,9 +350,10 @@ def free_for_all(ffa_characters):
 
 def versus():
     # Prompt for battle mode:
-    mode = input('1. 1v1\n'
-                 '2. 2v2\n'
-                 '3. Free for all\n\n'
+    mode = input('(1) 1v1\n'
+                 '(2) 2v2\n'
+                 '(3) Free for all\n'
+                 '(4) Return to Main Menu\n\n'
                  'Which versus battle mode would you like to pick: ')
     print()
 
@@ -418,6 +419,13 @@ def versus():
         winner = free_for_all(ffa_characters)
         print('The winner is :' + winner)
 
+    elif mode == '4':
+        print('Returning the Main Menu\n')
+        start()
+
+    elif mode not in ['1', '2', '3', '4']:
+        print('Invalid choice, please choose an option\n')
+        versus()
     else:
         error_message()
 
@@ -435,15 +443,16 @@ def request_a_character(choice):
 
 
 def start():  # sourcery no-metrics
-    choice = int(input('''(1) Search the Superhero/Villain index
+    choice = input('''(1) Search the Superhero/Villain index
 (2) Versus battles
 (3) Extras
 (4) Exit Program
 
-Which option would you like to pick: '''))
+Which option would you like to pick: ''')
     print()
 
-    if choice == 1:
+
+    if choice == '1':
         choice = str(input('Enter a Superhero/Villain name: '))
         print()
         characters = create_characters()
@@ -476,26 +485,27 @@ Which option would you like to pick: '''))
                 error_message()
         else:
             error_message()
-    elif choice == 2:
+    elif choice == '2':
         versus()
-    elif choice == 3:
-        choice = int(input('''(1) View project releases/newest changes
+    elif choice == '3':
+        choice = input('''(1) View project releases/newest changes
 (2) Credits
 (3) Request a hero/villain to be added
 (4) Return to main menu
 (5) Exit Program
 
-Which option would you like to pick: '''))
+Which option would you like to pick: ''')
         print()
-        if choice == 1:
+
+        if choice == '1':
             webbrowser.open('https://github.com/JordanLeich/Superhero-Index/releases')
             time.sleep(2)
             start()
-        elif choice == 2:
+        elif choice == '2':
             webbrowser.open('https://github.com/JordanLeich/Superhero-Index/graphs/contributors')
             time.sleep(2)
             start()
-        elif choice == 3:
+        elif choice == '3':
             choice = str(input('Enter the name of the hero/villain you would like added: '))
             print()
             characters = create_characters()
@@ -505,14 +515,21 @@ Which option would you like to pick: '''))
                     time.sleep(1)
                     start()
             request_a_character(choice)
-        elif choice == 4:
+        elif choice == '4':
             start()
-        elif choice == 5:
+        elif choice == '5':
             sys.exit()
+        elif choice not in ['1', '2', '3', '4']:
+            print('Invalid choice, please choose an option\n')
+            start()
         else:
             error_message()
-    elif choice == 4:
+    elif choice == '4':
         sys.exit()
+    elif choice not in ['1', '2', '3', '4']:
+        print('Invalid choice, please choose an option\n')
+        start()
+
     else:
         error_message()
 
