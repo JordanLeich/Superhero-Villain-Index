@@ -1,8 +1,8 @@
+import random
 import sys
 import webbrowser
 from modules import colors
 from modules.Characters import *
-import random
 
 
 def create_characters():
@@ -410,6 +410,7 @@ def versus():
             if len(ffa_characters) < 3:
                 continue
             keep_selecting = input('Select another character (yes / no): ')
+            print()
             if keep_selecting.lower() in ['y', 'yes', 'sure']:
                 selecting = True
             elif keep_selecting.lower() in ['n', 'no', 'nope']:
@@ -417,7 +418,9 @@ def versus():
 
         # Start free for all
         winner = free_for_all(ffa_characters)
-        print('The winner is :' + winner)
+        print(colors.green + 'The winner is :' + winner, colors.reset, '\n')
+        time.sleep(1)
+        start()
 
     elif mode == '4':
         print('Returning the Main Menu\n')
@@ -450,7 +453,6 @@ def start():  # sourcery no-metrics
 
 Which option would you like to pick: ''')
     print()
-
 
     if choice == '1':
         choice = str(input('Enter a Superhero/Villain name: '))
