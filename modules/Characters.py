@@ -3,7 +3,8 @@ from PIL import Image
 
 
 class Character:
-    def __init__(self, name, age, status, creator, team, durability, energy, fighting, intelligence, speed, strength, powers, power_ranking, image_path):
+    def __init__(self, name, age, status, creator, team, durability, energy, fighting, intelligence, speed, strength,
+                 powers, power_ranking, image_path):
         self.name = name
         self.age = age
         self.status = status

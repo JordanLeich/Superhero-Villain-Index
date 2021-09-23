@@ -461,10 +461,10 @@ Which option would you like to pick: ''')
             listOfHero.sort()
             for x in listOfHero:
                 print(x.capitalize(), end=', ')
-            print()
+            print('\n')
         elif choice.lower() in ['n', 'no', 'nope']:
             something = "Looking for something that break the elif"
-            # add this line in becase if the user says no it will not jump to error_message(),
+            # add this line in because if the user says no it will not jump to error_message(),
             # and if I don't add this line, the user can enter whatever he / she want and break the program.
         else:
             error_message()
@@ -529,6 +529,7 @@ Which option would you like to pick: ''')
                 input('Enter the name of the hero/villain you would like added: '))
             print()
             characters = find_characters()
+            # TODO Fix the request a character function
             for c in characters:
                 if choice.lower() == c.name.lower():
                     print(
