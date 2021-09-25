@@ -1,9 +1,9 @@
-from random import randint
 import sys
 import webbrowser
+from random import randint
+from character_info import all_characters
 from modules import colors
 from modules.Characters import *
-from character_info import all_characters
 
 
 # finds character inside of dictionary
@@ -80,40 +80,37 @@ def two_vs_two(team1char1, team1char2, team2char1, team2char2):
 
 
 def free_for_all(ffa_characters):
-    # sourcery skip: inline-immediately-returned-variable
+    # sourcery skip: assign-if-exp, boolean-if-exp-identity, inline-immediately-returned-variable, merge-duplicate-blocks, merge-nested-ifs, remove-redundant-if
     # Perform free for all battle
     # Pick a random 2 characters to fight in the list
     # Remove the loser in the list of active characters
     # Pick a random character in the list who hasn't fought yet
     # Evaluate for the winner and repeat until there is only 1 character left
-    fightactive = True
+    fight_active = True
     char1 = None
     char2 = None
 
-    while fightactive:
+    while fight_active:
         while char1 is None:
             char1 = ffa_characters[randint(0, len(ffa_characters) - 1)]
         while char2 is None or char2 == char1:
             char2 = ffa_characters[randint(0, len(ffa_characters) - 1)]
 
         # Perform fight between 2 characters and set the winner and loser
-        fightwinner = one_vs_one(char1, char2)
+        fight_winner = one_vs_one(char1, char2)
 
-        if fightwinner == char1.name:
-            fightloser = char2.name
-        elif fightwinner == char2.name:
-            fightloser = char1.name
+        if fight_winner == char1.name:
+            fight_loser = char2.name
+        elif fight_winner == char2.name:
+            fight_loser = char1.name
         # if its a draw then default winner to char2
-        # TODO decide what to do if its a draw, maybe randomly decide between the 2 fighters.
-        elif fightwinner == 'It\'s a draw!':
-            fightloser = char2.name
-
-
+        elif fight_winner == 'It\'s a draw!':
+            fight_loser = char2.name
 
         # check for the loser and remove from the list of available characters to fight
         for count, fighter in enumerate(ffa_characters):
             if ffa_characters[count] is not None:
-                if fighter.name == fightloser:
+                if fighter.name == fight_loser:
                     ffa_characters[count] = None
 
         # reset the fighting characters
@@ -126,11 +123,11 @@ def free_for_all(ffa_characters):
             if x:
                 count += 1
                 if count == 1:
-                    fightactive = False
+                    fight_active = False
                 else:
-                    fightactive = True
+                    fight_active = True
 
-    winner = fightwinner
+    winner = fight_winner
     return winner
 
 
@@ -195,7 +192,7 @@ def versus():
 
         # Start free for all
         winner = free_for_all(ffa_characters)
-        print(colors.green + 'The winner is :' + winner, colors.reset, '\n')
+        print(colors.green + 'The winner is...' + winner + '!', colors.reset, '\n')
     elif mode == '4':
         print('Returning the Main Menu\n')
     else:  # any choice besides those listed
