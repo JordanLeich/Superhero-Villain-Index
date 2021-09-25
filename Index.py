@@ -83,11 +83,54 @@ def free_for_all(ffa_characters):
     # sourcery skip: inline-immediately-returned-variable
     # Perform free for all battle
     # Pick a random 2 characters to fight in the list
-    # Remove the looser in the list of active characters
+    # Remove the loser in the list of active characters
     # Pick a random character in the list who hasn't fought yet
     # Evaluate for the winner and repeat until there is only 1 character left
-    # TODO Fix ffa_characters not returning the correct winner in a ffa battle.
-    winner = 'winner'
+    fightactive = True
+    char1 = None
+    char2 = None
+
+    while fightactive:
+        while char1 is None:
+            char1 = ffa_characters[randint(0, len(ffa_characters) - 1)]
+        while char2 is None or char2 == char1:
+            char2 = ffa_characters[randint(0, len(ffa_characters) - 1)]
+
+        # Perform fight between 2 characters and set the winner and loser
+        fightwinner = one_vs_one(char1, char2)
+
+        if fightwinner == char1.name:
+            fightloser = char2.name
+        elif fightwinner == char2.name:
+            fightloser = char1.name
+        # if its a draw then default winner to char2
+        # TODO decide what to do if its a draw, maybe randomly decide between the 2 fighters.
+        elif fightwinner == 'It\'s a draw!':
+            fightloser = char2.name
+
+
+
+        # check for the loser and remove from the list of available characters to fight
+        for count, fighter in enumerate(ffa_characters):
+            if ffa_characters[count] is not None:
+                if fighter.name == fightloser:
+                    ffa_characters[count] = None
+
+        # reset the fighting characters
+        char1 = None
+        char2 = None
+
+        # check if there is 1 active character left, if so its the winner
+        count = 0
+        for x in ffa_characters:
+            if x:
+                count += 1
+                if count == 1:
+                    fightactive = False
+                else:
+                    fightactive = True
+
+    winner = fightwinner
     return winner
 
 
