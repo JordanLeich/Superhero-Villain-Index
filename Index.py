@@ -7,32 +7,35 @@ from modules.Characters import *
 
 
 # finds character inside of dictionary
-def find_characters(character):
+def get_character(character):
     if character.lower() in all_characters:
-        return all_characters[character]
+        return all_characters[character.lower()]
     else:
         return None  # character not found
 
 
+# to prompt users to fix their mistakes in a yes/no question
+def yes_or_no_choice(input_text):
+    while (text_choice := str(input(input_text)).lower()) not in ['n', 'no', 'nope']:
+        print()
+        if text_choice in ['y', 'yes', 'sure']:
+            return True
+        else: # prompt user to fix mistake made
+            user_error("Invalid choice, please say either 'yes' or 'no'\n")
+    print()
+    return False
+
+
 # returns character if found or None if not found
 # handles if character not found and would like to add character to text doc
-def find_character(character):
-    characters = find_characters(character)
-    if not characters:
+def find_character(character_choice):
+    character = get_character(character_choice)
+    if not character:
         user_error('Superhero/Villain name not found!\n')
-        write_to_text_choice = str(input(
-            'Would you like to request developers to add this superhero/villain '
-            '(yes / no): '))
-        print()
-        if write_to_text_choice.lower() in ['y', 'yes', 'sure']:
-            request_a_character(character)
-        elif write_to_text_choice.lower() not in ['n', 'no', 'nope']:
-            error_message()  # TODO prompt user to fix mistake made
-    return characters
-
-
-def character_total(character):  # Gets total value from all of the characters traits
-    return character.durability + character.energy + character.fighting + character.intelligence + character.speed + character.strength
+        input_text = 'Would you like to request developers to add this character: '
+        if yes_or_no_choice(input_text):
+            request_a_character(character_choice)
+    return character
 
 
 # characters battle it out
@@ -53,23 +56,24 @@ def character_fight(first_character, first_name, second_character, second_name, 
         return "It's a draw!"
 
 
-def one_vs_one(first_character, second_character):
+def one_vs_one(player_one, player_two):
     # Checks which fighter has a higher fighting stat to get a slight bonus
-    character_one, one_name = character_total(first_character), first_character.name
-    character_two, two_name = character_total(second_character), second_character.name
-    if first_character.fighting > second_character.fighting:
-        return character_fight(character_one, one_name, character_two, two_name, True)
-    elif first_character.fighting < second_character.fighting:
-        return character_fight(character_two, two_name, character_one, one_name, True)
+    one_stat_total, one_name = player_one.total_stats(), player_one.get_name()
+    two_stat_total, two_name = player_two.total_stats(), player_two.get_name()
+    one_f_stat, two_f_stat = player_one.get_stat("Fighting"), player_two.get_stat("Fighting")
+    if one_f_stat > two_f_stat:
+        return character_fight(one_stat_total, one_name, two_stat_total, two_name, True)
+    elif one_f_stat < two_f_stat:
+        return character_fight(two_stat_total, two_name, one_stat_total, one_name, True)
     # equal fighting stat there is a random bonus given to each fighter that is added to their total
-    elif first_character.fighting == second_character.fighting:
-        return character_fight(character_one, one_name, character_two, two_name, False)
+    elif one_f_stat == two_f_stat:
+        return character_fight(one_stat_total, one_name, two_stat_total, two_name, False)
 
 
 def two_vs_two(team1char1, team1char2, team2char1, team2char2):
     # grab stats for each of the teams
-    team1power = character_total(team1char1) + character_total(team1char2)
-    team2power = character_total(team2char1) + character_total(team2char2)
+    team1power = team1char1.total_stats() + team1char2.total_stats()
+    team2power = team2char1.total_stats() + team2char2.total_stats()
 
     if team1power > team2power:  # apply bonuses to teams the same way we did for 1v1
         return character_fight(team1power, 'Team 1', team2power, 'Team 2', True)
@@ -79,56 +83,31 @@ def two_vs_two(team1char1, team1char2, team2char1, team2char2):
         return character_fight(team1power, 'Team 1', team2power, 'Team 2', False)
 
 
+# Pick a random 2 characters to fight in the list
+# Remove the loser in the list of active characters
+# Evaluate for the winner and repeat until only 1 character left
 def free_for_all(ffa_characters):
-    # sourcery skip: assign-if-exp, boolean-if-exp-identity, inline-immediately-returned-variable, merge-duplicate-blocks, merge-nested-ifs, remove-redundant-if
-    # Perform free for all battle
-    # Pick a random 2 characters to fight in the list
-    # Remove the loser in the list of active characters
-    # Pick a random character in the list who hasn't fought yet
-    # Evaluate for the winner and repeat until there is only 1 character left
-    fight_active = True
-    char1 = None
-    char2 = None
+    remove_char_index = 0
+    while len(ffa_characters) > 1:
+        # reset the fighting characters
+        char_one_index = char_two_index = randint(0, len(ffa_characters) - 1)
+        char1 = char2 = ffa_characters[char_one_index]
+        while char2 == char1:
+            char_two_index = randint(0, len(ffa_characters) - 1)
+            char2 = ffa_characters[char_two_index]
 
-    while fight_active:
-        while char1 is None:
-            char1 = ffa_characters[randint(0, len(ffa_characters) - 1)]
-        while char2 is None or char2 == char1:
-            char2 = ffa_characters[randint(0, len(ffa_characters) - 1)]
-
-        # Perform fight between 2 characters and set the winner and loser
         fight_winner = one_vs_one(char1, char2)
 
-        if fight_winner == char1.name:
-            fight_loser = char2.name
-        elif fight_winner == char2.name:
-            fight_loser = char1.name
-        # if its a draw then default winner to char2
-        elif fight_winner == 'It\'s a draw!':
-            fight_loser = char2.name
+        if fight_winner == char2.get_name():
+            remove_char_index = char_one_index
+        elif fight_winner == char1.get_name():
+            remove_char_index = char_two_index
+        else: # if draw then choose random loser
+            remove_char_index = [char_one_index, char_two_index][randint(0, 1)]
 
-        # check for the loser and remove from the list of available characters to fight
-        for count, fighter in enumerate(ffa_characters):
-            if ffa_characters[count] is not None:
-                if fighter.name == fight_loser:
-                    ffa_characters[count] = None
+        del ffa_characters[remove_char_index] # remove loser from available characters
 
-        # reset the fighting characters
-        char1 = None
-        char2 = None
-
-        # check if there is 1 active character left, if so its the winner
-        count = 0
-        for x in ffa_characters:
-            if x:
-                count += 1
-                if count == 1:
-                    fight_active = False
-                else:
-                    fight_active = True
-
-    winner = fight_winner
-    return winner
+    return ffa_characters[0] # winner will always be last character in array
 
 
 # recursive until character properly selected
@@ -176,19 +155,13 @@ def versus():
         print(colors.green + 'Free for all mode selected\n', colors.reset)
         ffa_characters = []
         selecting = True
-        while selecting or len(ffa_characters) < 3:
+        while selecting:
             char_name = input('Enter a character name for the free for all: ')
             print()
             char_name = find_character(char_name)
             ffa_characters.append(char_name)
-            if len(ffa_characters) < 3:
-                continue
-            keep_selecting = input('Select another character (yes / no): ')
-            print()
-            if keep_selecting.lower() in ['y', 'yes', 'sure']:
-                selecting = True
-            elif keep_selecting.lower() in ['n', 'no', 'nope']:
-                selecting = False
+            if len(ffa_characters) > 3:
+                selecting = yes_or_no_choice('Select another character (yes / no): ')
 
         # Start free for all
         winner = free_for_all(ffa_characters)
@@ -229,7 +202,7 @@ def extras_menu():
     elif choice == '3':
         choice = str(input('Enter the name of the hero/villain you would like added: '))
         print()
-        characters = find_characters(choice)
+        characters = get_character(choice)
         if characters:
             user_error('This hero/villain is already included in the index!\n')
         else:
@@ -250,31 +223,18 @@ def start():  # sourcery no-metrics
                        'Which option would you like to pick: ')
         print()
         if choice == '1':
-            choice = str(input('Do you want look at the Superhero/Villain list? '))
-            print()
-            if choice.lower() in ['y', 'yes', 'sure']:
-                listOfHero = list(all_characters.keys())
-                listOfHero.sort()
-                for x in listOfHero:
-                    print(x.capitalize(), end=', ')
+            if yes_or_no_choice('List characaters in the Superhero/Villain index? '):
+                print(', '.join(sorted([x.capitalize() for x in all_characters.keys()])))
                 print('\n')
-            elif choice.lower() not in ['n', 'no', 'nope']:
-                # handle improper input -- anything besides 'no'
-                error_message()
+            
             choice = str(input('Enter a Superhero/Villain name: '))
             print()
-            characters = find_character(choice)
-            if characters:
-                characters.print_hero()
-                time.sleep(2)
-                choice = str(
-                    input('Would you like to view a photo of this Superhero/Villain (yes / no): '))
-                print()
-                if choice.lower() in ['y', 'yes', 'sure']:
-                    characters.show_image()
-                elif choice.lower() not in ['n', 'no', 'nope']:
-                    # handle improper input -- anything besides 'no'
-                    error_message()
+            character = find_character(choice)
+            if character:
+                print(character)
+                time.sleep(1)
+                if yes_or_no_choice('Would you like to view a photo of this character: '):
+                    character.show_image()
                 time.sleep(1)
         elif choice == '2':
             versus()
@@ -288,12 +248,7 @@ def start():  # sourcery no-metrics
 
 # to notify user of an error they made
 def user_error(message):
-    print(colors.red + message, colors.reset)
-
-
-def error_message():
-    print(colors.red + 'Error found!\n', colors.reset)
-    time.sleep(2)
+    print(colors.red, message, colors.reset)
 
 
 if __name__ == '__main__':
