@@ -6,29 +6,34 @@ from modules import colors
 from modules.Characters import *
 
 
-# finds character inside of dictionary
 def get_character(character):
+    """
+Finds character inside of dictionary
+    """
     if character.lower() in all_characters:
         return all_characters[character.lower()]
     else:
         return None  # character not found
 
 
-# to prompt users to fix their mistakes in a yes/no question
 def yes_or_no_choice(input_text):
+    """
+To prompt users to fix their mistakes in a yes/no question
+    """
     while (text_choice := str(input(input_text)).lower()) not in ['n', 'no', 'nope']:
         print()
         if text_choice in ['y', 'yes', 'sure']:
             return True
-        else: # prompt user to fix mistake made
+        else:  # prompt user to fix mistake made
             user_error("Invalid choice, please say either 'yes' or 'no'\n")
     print()
     return False
 
 
-# returns character if found or None if not found
-# handles if character not found and would like to add character to text doc
 def find_character(character_choice):
+    """
+returns character if found or None if not found, handles if character not found and would like to add character to text doc
+    """
     character = get_character(character_choice)
     if not character:
         user_error('Superhero/Villain name not found!\n')
@@ -38,9 +43,10 @@ def find_character(character_choice):
     return character
 
 
-# characters battle it out
-# generic function serving one_vs_one and two_vs_two
 def character_fight(first_character, first_name, second_character, second_name, stat_not_equal):
+    """
+Characters battle it out, generic function serving one_vs_one and two_vs_two
+    """
     # bonuses randomly distributed to give the character with less fighting stats a chance
     char_one_total = first_character + randint(0, 6)
     if stat_not_equal:
@@ -57,6 +63,9 @@ def character_fight(first_character, first_name, second_character, second_name, 
 
 
 def one_vs_one(player_one, player_two):
+    """
+Used for 1v1 fights between a both a hero or villain
+    """
     # Checks which fighter has a higher fighting stat to get a slight bonus
     one_stat_total, one_name = player_one.total_stats(), player_one.get_name()
     two_stat_total, two_name = player_two.total_stats(), player_two.get_name()
@@ -71,6 +80,9 @@ def one_vs_one(player_one, player_two):
 
 
 def two_vs_two(team1char1, team1char2, team2char1, team2char2):
+    """
+Used for 2v2 fights between a both a hero or villain
+    """
     # grab stats for each of the teams
     team1power = team1char1.total_stats() + team1char2.total_stats()
     team2power = team2char1.total_stats() + team2char2.total_stats()
@@ -87,6 +99,9 @@ def two_vs_two(team1char1, team1char2, team2char1, team2char2):
 # Remove the loser in the list of active characters
 # Evaluate for the winner and repeat until only 1 character left
 def free_for_all(ffa_characters):
+    """
+Used for ffa fights between heroes or villains
+    """
     remove_char_index = 0
     while len(ffa_characters) > 1:
         # reset the fighting characters
@@ -102,16 +117,18 @@ def free_for_all(ffa_characters):
             remove_char_index = char_one_index
         elif fight_winner == char1.get_name():
             remove_char_index = char_two_index
-        else: # if draw then choose random loser
+        else:  # if draw then choose random loser
             remove_char_index = [char_one_index, char_two_index][randint(0, 1)]
 
-        del ffa_characters[remove_char_index] # remove loser from available characters
+        del ffa_characters[remove_char_index]  # remove loser from available characters
 
-    return ffa_characters[0] # winner will always be last character in array
+    return ffa_characters[0]  # winner will always be last character in array
 
 
-# recursive until character properly selected
 def prompt_character_selection(input_text):
+    """
+Recursive until character properly selected
+    """
     character_choice = str(input(input_text))
     print()
     first = find_character(character_choice)
@@ -120,8 +137,10 @@ def prompt_character_selection(input_text):
     return first
 
 
-# recursive if improper input selected in menu to prompt user
 def versus():
+    """
+Recursive if improper input selected in menu to prompt user
+    """
     # Prompt for battle mode:
     mode = input('(1) 1v1\n'
                  '(2) 2v2\n'
@@ -175,6 +194,9 @@ def versus():
 
 
 def request_a_character(choice):
+    """
+Used for the end-user to request a character
+    """
     with open("characters_to_add.txt", "a") as f:  # file closes when outside this code block
         f.write(str(choice) + '\n')
     print(colors.green + 'Name has been added to the list! You can now go to '
@@ -186,6 +208,9 @@ def request_a_character(choice):
 
 # will be recursive when an error - so to prompt user with menu and fix their error
 def extras_menu():
+    """
+Menu used for the extras portion of the index
+    """
     choice = input('(1) View project releases/newest changes\n'
                    '(2) Credits\n'
                    '(3) Request a hero/villain to be added\n'
@@ -215,6 +240,9 @@ def extras_menu():
 
 
 def start():  # sourcery no-metrics
+    """
+Very beginning section menu of the program that is first ran
+    """
     while True:
         choice = input('(1) Search the Superhero/Villain index\n'
                        '(2) Versus battles\n'
@@ -223,10 +251,10 @@ def start():  # sourcery no-metrics
                        'Which option would you like to pick: ')
         print()
         if choice == '1':
-            if yes_or_no_choice('List characaters in the Superhero/Villain index? '):
+            if yes_or_no_choice('List characters in the Superhero/Villain index? '):
                 print(', '.join(sorted([x.capitalize() for x in all_characters.keys()])))
                 print('\n')
-            
+
             choice = str(input('Enter a Superhero/Villain name: '))
             print()
             character = find_character(choice)
@@ -246,8 +274,10 @@ def start():  # sourcery no-metrics
             print('Invalid choice, please choose an option\n')
 
 
-# to notify user of an error they made
 def user_error(message):
+    """
+Used to notify user of an error they made
+    """
     print(colors.red, message, colors.reset)
 
 
